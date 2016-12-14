@@ -1,0 +1,110 @@
+* {
+  font-family: Calibri;
+  margin: 0;
+  padding: 0;
+}
+.inline {
+  display: inline-block;
+
+}
+.right {
+  float: right;
+  margin-top: 15px;
+}
+#nav {
+  width: 100%;  
+  border-bottom: 2px solid black;
+}
+#navIn {
+  /*width: 1200px;*/
+  margin: 0 20px;
+  font-size: 1.5em;  
+  overflow: hidden;
+  padding-bottom: 10px;
+}
+#navIn a {
+	text-decoration: none;
+	margin-left: 10px; 
+	color: black;
+}
+#header {
+  width: 100%;
+	overflow: hidden;
+	margin-top: 30px;
+}
+#header input {
+	width: 250px;
+	color: white;
+	background-color: steelblue;
+	border-radius: 5px;
+	border: none;  
+	font-size: 1em;
+	padding: 10px;
+}
+#wrap {
+  width: 1200px;  
+  margin: auto auto;
+  font-size: 1.5em;
+}
+.box {
+  margin-top: 40px;
+  width: 45%;
+  overflow: hidden;
+  border-radius: 20px;
+}
+#mid label {
+  display: block;
+  margin: 10px 30px;
+  padding: 10px 0;
+}
+#mid input, #mid select {
+  display: block;
+  border-radius: 5px;
+  width: 100%;
+  font-size: 1em;
+}
+
+#selectors label {
+  margin: 10px 30px;
+  padding: 10px 0;
+}
+#selectors input, #selectors select {
+  border-radius: 5px;
+  margin: 15px;
+  font-size: 1em;
+}
+.green {
+  width: 200px;
+  border-radius: 5px;
+  border: none;  
+  background-color: seagreen;
+  color: white;
+  font-size: 1em;
+  padding: 10px 0;
+}
+.box h1 {
+  padding: 0 10px;
+  font-weight: normal;
+}
+#errors {
+  color: red;
+  border: none;
+  margin-left: 30px;
+}
+#registration, #login {
+  vertical-align: top;
+  margin-left: 20px;
+}
+#mid {
+	width: 70%;
+	margin: 0 auto;
+}
+#pmessage {
+  font-size: .7em;
+  margin-left: 30px;
+}
+
+#myDiv {
+  width: 70%;
+  min-height: 700px;
+}

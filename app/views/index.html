@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <title>Welcome</title>
+    <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+  </head>
+  <body>    
+      <div id="wrap">
+        <div id="header">
+          <h1 class="inline">Welcome to the Charts</h1>          
+        </div>
+      <div id="mid">
+        <div id="registration" class="box inline">
+          <h1>Register</h1>
+          
+          <form action="/registration" method="POST">            
+            <label>Name: <input type="text" name="name"></label>
+            <label>User Name: <input type="text" name="uname"></label>
+            <p id="pmessage">* Password should atlest be 8 characters.</p>
+            <label>Password:<input type="password" name="password"></label>
+            <label>Confirm PW:<input type="password" name="confirm"></label>
+            <label><input class="green" type="submit" name="submit" value="Register"></label>
+          </form>
+          
+        </div>
+        
+        <div id="login" class="box inline">
+          <h1>Login</h1>
+          <form action="/login" method="POST">
+            <label>User Name: <input type="text" name="uname"></label>
+            <label>Password:<input type="password" name="password"></label>
+            <label><input class="green"  type="submit" name="submit" value="Login"></label>
+          </form>
+        </div>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            {% for message in messages %}
+              <p>{{message}}</p>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>  <!-- Plotly.js -->
+  <script src="https://cdn.rawgit.com/etpinard/plotlyjs-finance/master/plotlyjs-finance.js"></script>  <!-- PlotlyFinance.js -->
+  <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+      $(function(){
+        $('form').submit(function(){
+				  $.post('/stock', $(this).serialize(),function(res){
+          data = res['data'];
+          if ('error' in data) {
+            msg =""
+            for (i in data['error']) {
+              msg+="<p>"
+              msg+=data['error'][i]
+              msg+="</p>"              
+            }
+            $('#errors').html(msg)
+          }
+          else {
+            var fig = PlotlyFinance.createCandlestick(
+            {
+              open: data['open'],
+              high: data['high'],
+              low: data['low'],
+              close: data['close'],
+              dates: data['dates'].map(function(d) { return new Date(d); })
+            }
+            );
+            fig.layout.title = data['name'];
+            Plotly.newPlot('myDiv', fig.data, fig.layout);
+            }
+          });
+          return false;
+        });
+      });
+    </script>  
+</head>
+<body>
+  <div id="container">
+    <div id="charting">
+      <div id="nav">
+        <div id="navIn">
+          <h1 class="inline">Charts</h1>
+          <h3 class="inline"><a href="/charts">Dashboard</a></h3>
+          <h3 class= "right"><a  href="/logoff">Log off</a></h3>
+        </div>
+      </div>
+    <div id="selectors">
+      <form action= "">
+        <select id="stock_list" name="code">
+          <option></option>
+          {% for company in stock_list%}
+          <option value={{company['code']}}>{{company['name']}}</option>
+          {% endfor %}
+        </select>
+        <label class ="inline">Start Date:<input type="date" name="start_date"></label>
+        <labelclass ="inline">End Date:<input type="date" name="end_date"></label>
+        <input class= "green inline" id = "getChart" type="submit" name="submit" value="Get Chart">
+      </form>
+    </div>
+    <div id="errors"></div>
+    <div id="myDiv"><!-- Plotly chart will be drawn inside this DIV --></div>
+    </div>
+
+  </div>
+</body>
+</html>
